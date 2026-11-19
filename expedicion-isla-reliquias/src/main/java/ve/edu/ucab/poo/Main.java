@@ -6,14 +6,14 @@ import ve.edu.ucab.poo.vista.VistaConsola;
 
 public class Main {
     public static void main(String[] args) {
-        String url = "http://localhost:8000/api/v1";
+        String urlBase = "http://localhost:8000/api/v1";
         if (args != null && args.length > 0 && !args[0].isBlank()) {
-            url = args[0].trim();
+            urlBase = args[0].trim();
         }
 
-        ClienteApi api = new ClienteApi(url);
-        ControladorExpedicion ctrl = new ControladorExpedicion(api);
-        VistaConsola vista = new VistaConsola(ctrl);
+        ClienteApi cliente = new ClienteApi(urlBase);
+        ControladorExpedicion controlador = new ControladorExpedicion(cliente);
+        VistaConsola vista = new VistaConsola(controlador);
         vista.iniciar();
     }
 }
